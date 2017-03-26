@@ -21,4 +21,10 @@ export class PostsProvider {
     return this.http.get("https://jsonplaceholder.typicode.com/posts");
   }
 
+  getPost(id){
+    console.log("getPost called on PostsProvider");
+
+    return this.http.get("https://jsonplaceholder.typicode.com/posts/" + id);
+  }
+
 }
