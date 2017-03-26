@@ -3,6 +3,8 @@ import { NavController, NavParams } from 'ionic-angular';
 
 import { PostsProvider } from '../../providers/posts-provider';
 
+import { PostDetailsPage } from '../post-details/post-details';
+
 /*
   Generated class for the Posts page.
 
@@ -31,6 +33,8 @@ export class PostsPage {
 
   itemSelected(item) {
     console.log("We will navigate to item: " + item.id);
+
+    this.navCtrl.push(PostDetailsPage, { id: item.id });
   }
 
 }
