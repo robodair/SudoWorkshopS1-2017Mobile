@@ -15,4 +15,10 @@ export class PostsProvider {
     console.log('Hello PostsProvider Provider');
   }
 
+  getPosts(){
+    console.log("getPosts called on PostsProvider");
+
+    return this.http.get("https://jsonplaceholder.typicode.com/posts");
+  }
+
 }

@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
+import { PostsProvider } from '../../providers/posts-provider';
+
 /*
   Generated class for the Posts page.
 
@@ -13,19 +15,18 @@ import { NavController, NavParams } from 'ionic-angular';
 })
 export class PostsPage {
 
-  items = [
-    {
-      "userId": 1,
-      "id": 1,
-      "title": "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
-      "body": "quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto"
-    }
-  ];
+  items = [];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) { }
+  constructor(public navCtrl: NavController, public navParams: NavParams,
+              private postsProvider: PostsProvider) { }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad PostsPage');
+    this.postsProvider.getPosts().subscribe(
+      (response) => {
+        this.items = response.json();
+      }
+    );
   }
 
   itemSelected(item) {
