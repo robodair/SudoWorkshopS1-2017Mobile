@@ -12,11 +12,42 @@ import { NavController, NavParams } from 'ionic-angular';
   templateUrl: 'login.html'
 })
 export class LoginPage {
+  items: string[];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {}
+  myInput: string = "";
+
+  constructor(public navCtrl: NavController, public navParams: NavParams) {
+    this.initItems();
+  }
+
+  initItems() {
+    this.items = ["hello", "goodbye", "one", "two"];
+  }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad LoginPage');
+    //this.navCtrl.parent.select(1);
+  }
+
+  onInput(event) {
+    console.log(event.target.value);
+
+    this.initItems();
+    this.items = this.items.filter(
+      (item) => {
+        let searchString: string = event.target.value.toLowerCase();
+
+        if (item.toLowerCase().indexOf(searchString) > -1){
+          return true;
+        }
+        else {
+          return false;
+        }
+      });
+  }
+
+  onCancel(event) {
+
   }
 
 }
