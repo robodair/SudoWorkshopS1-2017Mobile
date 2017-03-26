@@ -13,6 +13,10 @@
 </ion-header>
 
 
-<ion-content padding>
-
+<ion-content>
+  <ion-list inset>
+    <button ion-item *ngFor="let item of items" (click)="itemSelected(item)">
+    {{ item.title }}
+    </button>
+  </ion-list>
 </ion-content>
